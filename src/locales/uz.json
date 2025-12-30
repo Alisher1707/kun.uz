@@ -16,5 +16,11 @@
     "light": "Light",
     "businessClass": "Business class",
     "audio": "Audio"
+  },
+  "hero": {
+    "category": "O'ZBEKISTON",
+    "title": "Ekologik farmon: qurilishlar va korxonalar ustidan qat'iy nazorat, sun'iy ko'llar, transport harakatidagi cheklovlar",
+    "latestNews": "So'ngi yangiliklar",
+    "viewMore": "Bo'limga o'tish"
   }
 }

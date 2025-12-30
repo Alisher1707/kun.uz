@@ -16,5 +16,11 @@
     "light": "Light",
     "businessClass": "Business class",
     "audio": "Audio"
+  },
+  "hero": {
+    "category": "UZBEKISTAN",
+    "title": "Environmental decree: strict control over construction and enterprises, artificial lakes, traffic restrictions",
+    "latestNews": "Latest News",
+    "viewMore": "Go to section"
   }
 }

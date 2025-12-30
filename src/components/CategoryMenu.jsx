@@ -21,7 +21,7 @@ const CategoryMenu = () => {
   return (
     <div className="w-full bg-[#F7F7F7] border-b border-gray-100">
       <div className="w-full px-16">
-        <div className="flex items-center gap-12 py-5 overflow-x-auto ml-28">
+        <div className="flex items-center gap-12 py-7 overflow-x-auto ml-28">
           {categories.map((category) => (
             <button
               key={category.id}
