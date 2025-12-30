@@ -4,5 +4,17 @@
     "region": "Hudud",
     "media": "Media",
     "language": "O'zbek tili"
+  },
+  "menu": {
+    "barchasi": "Barchasi",
+    "ozbekiston": "O'zbekiston",
+    "jahon": "Jahon",
+    "iqtisodiyot": "Iqtisodiyot",
+    "jamiyat": "Jamiyat",
+    "fanTexnika": "Fan va Texnika",
+    "sport": "Sport",
+    "light": "Light",
+    "businessClass": "Business class",
+    "audio": "Audio"
   }
 }

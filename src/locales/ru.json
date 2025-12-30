@@ -4,5 +4,17 @@
     "region": "Регион",
     "media": "Медиа",
     "language": "Русский"
+  },
+  "menu": {
+    "barchasi": "Все",
+    "ozbekiston": "Узбекистан",
+    "jahon": "Мир",
+    "iqtisodiyot": "Экономика",
+    "jamiyat": "Общество",
+    "fanTexnika": "Наука и Техника",
+    "sport": "Спорт",
+    "light": "Light",
+    "businessClass": "Business class",
+    "audio": "Аудио"
   }
 }
