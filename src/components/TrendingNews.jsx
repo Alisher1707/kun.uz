@@ -60,12 +60,12 @@ const TrendingNews = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-bold font-bluu" style={{ color: '#010E38' }}>
+            <h2 className="text-2xl font-bold font-sans text-[#000000]">
               {t('trending.title')}
             </h2>
             <span className="w-2 h-2 bg-red-600 rounded-full"></span>
           </div>
-          <button className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10" style={{ color: '#010E38' }}>
+          <button className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#000000]">
             {t('trending.viewAll')}
             <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
           </button>
@@ -89,7 +89,7 @@ const TrendingNews = () => {
                 {/* Category Badge */}
                 <div className="absolute top-0 right-0">
                   <div className="bg-black/60 px-4 py-2">
-                    <span className="text-xs font-bold text-white tracking-wider">
+                    <span className="text-xs font-bold text-white tracking-wider font-sans">
                       {item.category}
                     </span>
                   </div>
@@ -101,19 +101,19 @@ const TrendingNews = () => {
                 {/* Date */}
                 <div className="flex items-center gap-2 mb-3">
                   <svg
-                    className="w-4 h-4 text-gray-500 flex-shrink-0"
+                    className="w-4 h-4 flex-shrink-0"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="#000000"
                     viewBox="0 0 24 24"
                   >
                     <circle cx="12" cy="12" r="10" strokeWidth="2"/>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
                   </svg>
-                  <span className="text-sm text-gray-600">{item.date}</span>
+                  <span className="text-sm font-sans text-[#000000]">{item.date}</span>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base text-black leading-relaxed font-normal line-clamp-3 group-hover:text-gray-700 transition-colors">
+                <h3 className="text-base leading-relaxed font-normal line-clamp-3 transition-colors font-sans text-[#000000] hover:text-[#000000]">
                   {t(`trending.news.${item.id}`)}
                 </h3>
               </div>
