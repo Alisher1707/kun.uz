@@ -103,7 +103,7 @@ const HeroSection = () => {
               </div>
 
               {/* View More Button */}
-              <button className="w-full mt-6 py-4 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2" style={{ color: '#010E38' }}>
+              <button className="mt-6 py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2" style={{ color: '#010E38' }}>
                 {t('hero.viewMore')}
                 <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
               </button>

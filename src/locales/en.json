@@ -22,5 +22,19 @@
     "title": "Environmental decree: strict control over construction and enterprises, artificial lakes, traffic restrictions",
     "latestNews": "Latest News",
     "viewMore": "Go to section"
+  },
+  "trending": {
+    "title": "Trending News",
+    "viewAll": "Go to section",
+    "news": {
+      "1": "Saida Mirziyoyeva presented comprehensive proposals to improve the environmental situation in Tashkent...",
+      "2": "Public hearings on the nuclear power plant construction project will be held in Jizzakh",
+      "3": "Uzbekistan national team took a place in the third basket of the 2026 World Cup draw",
+      "4": "The US has shortened the peace plan – and is now trying to convince Russia to accept it",
+      "5": "25-year-old crime, photo ban and Taliban ministers who went to India...",
+      "6": "Neftchi became the champion of Uzbekistan after a 24-year break",
+      "7": "Air-polluting enterprises were given a deadline: they must install monitoring stations...",
+      "8": "An internal affairs officer and his minor daughter died from gas in Andijan"
+    }
   }
 }

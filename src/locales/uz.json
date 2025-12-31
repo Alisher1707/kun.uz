@@ -22,5 +22,19 @@
     "title": "Ekologik farmon: qurilishlar va korxonalar ustidan qat'iy nazorat, sun'iy ko'llar, transport harakatidagi cheklovlar",
     "latestNews": "So'ngi yangiliklar",
     "viewMore": "Bo'limga o'tish"
+  },
+  "trending": {
+    "title": "Dolzarb xabarlar",
+    "viewAll": "Bo'limga o'tish",
+    "news": {
+      "1": "Saida Mirziyoyeva Toshkentda ekologik vaziyatni yaxshilash bo'yicha kompleks takliflarni...",
+      "2": "Jizzaxda AES qurilishi loyihasi bo'yicha jamoatchilik eshituvlari o'tkaziladi",
+      "3": "O'zbekiston milliy jamoasi JCh-2026 qur'asida uchinchi savatdan joy oldi",
+      "4": "AQSh tinchlik rejasini qisqartirdi – va endi Rossiyani uni qabul qilishga ko'ndirmoqchi",
+      "5": "25 yillik jinoyat, rasmga olishga taqiq va Hindistonga borgan «Tolibon» vazirlar...",
+      "6": "«Neftchi» 24 yillik tanaffusdan keyin O'zbekiston chempioni bo'ldi",
+      "7": "Havoni ifloslaydigan korxonalarga muhlat berildi: ular monitoring stansiyasini o'rnati...",
+      "8": "Andijonda ichki ishlar xodimi va uning voyaga yetmagan qizi is gazidan vafot etdi"
+    }
   }
 }
