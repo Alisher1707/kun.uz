@@ -56,5 +56,35 @@
       "5": "O'zbekistonda dorilar Qozog'istonga qaraganda qimmat – farmatsevtika bozoriqa qanday omillar ta'sir qilayapti?",
       "6": "\"O lib qolaman deb o'yladim\" – Toshkentda ilk marta qimirlab qiynab, bo'yiniga jiroyat ilmoqchi bo'lishdi"
     }
+  },
+  "articles": {
+    "title": "Maqolalar",
+    "viewAll": "Bo'limga o'tish",
+    "items": {
+      "1": {
+        "title": "«Tramp tinchlik rejasi»da nima yozilgan? Barcha 28 band o'zbek tilida",
+        "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
+      },
+      "2": {
+        "title": "«Tramp tinchlik rejasi»da nima yozilgan? Barcha 28 band o'zbek tilida",
+        "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
+      },
+      "3": {
+        "title": "«Tramp tinchlik rejasi»da nima yozilgan? Barcha 28 band o'zbek tilida",
+        "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
+      },
+      "4": {
+        "title": "«Tramp tinchlik rejasi»da nima yozilgan? Barcha 28 band o'zbek tilida",
+        "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
+      },
+      "5": {
+        "title": "«Tramp tinchlik rejasi»da nima yozilgan? Barcha 28 band o'zbek tilida",
+        "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
+      },
+      "6": {
+        "title": "«Tramp tinchlik rejasi»da nima yozilgan? Barcha 28 band o'zbek tilida",
+        "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
+      }
+    }
   }
 }

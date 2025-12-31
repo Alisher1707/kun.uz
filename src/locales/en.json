@@ -56,5 +56,35 @@
       "5": "Medicines in Uzbekistan are more expensive than in Kazakhstan – what factors affect the pharmaceutical market?",
       "6": "\"Thought I would die\" – In Tashkent, for the first time, they tried to rob with a knife to the neck"
     }
+  },
+  "articles": {
+    "title": "Articles",
+    "viewAll": "Go to section",
+    "items": {
+      "1": {
+        "title": "What is written in «Trump's Peace Plan»? All 28 points in Uzbek language",
+        "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
+      },
+      "2": {
+        "title": "What is written in «Trump's Peace Plan»? All 28 points in Uzbek language",
+        "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
+      },
+      "3": {
+        "title": "What is written in «Trump's Peace Plan»? All 28 points in Uzbek language",
+        "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
+      },
+      "4": {
+        "title": "What is written in «Trump's Peace Plan»? All 28 points in Uzbek language",
+        "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
+      },
+      "5": {
+        "title": "What is written in «Trump's Peace Plan»? All 28 points in Uzbek language",
+        "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
+      },
+      "6": {
+        "title": "What is written in «Trump's Peace Plan»? All 28 points in Uzbek language",
+        "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
+      }
+    }
   }
 }

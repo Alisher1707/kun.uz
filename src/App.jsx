@@ -4,6 +4,7 @@ import HeroSection from './components/HeroSection';
 import TrendingNews from './components/TrendingNews';
 import PhotoGallery from './components/PhotoGallery';
 import Survey from './components/Survey';
+import Articles from './components/Articles';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <TrendingNews />
       <PhotoGallery />
       <Survey />
+      <Articles />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Content will go here */}
       </main>
