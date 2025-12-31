@@ -44,5 +44,17 @@
       "1": "Javohir Sindorov Jahon kubogi g'olibi bo'ldi. U finalda Xitoy vakili Vey Yini mag'lub etdi va Jaho...",
       "2": "Toshkentdagi ekologik vaziyatni yaxshilash uchun maxsus komissiya tuzildi, unga jiddiy vakolatlar..."
     }
+  },
+  "survey": {
+    "title": "Kun.uz surishtiruvi",
+    "viewAll": "Bo'limga o'tish",
+    "news": {
+      "1": "\"Yuk mashinalari sabab halovat yo'q\" – chegara qishloqdagi tartibsizliklar qachon barham topadi?",
+      "2": "\"Hamma biladi, lekin hech kim indamaydi\" - Buloqboshida kanalni ko'pikka to'ldirgan kim?",
+      "3": "\"Vahshiylik shu darajada bo'ladimi?..\" - zaharli dori sabab vodiyda asalarilar qirilib bitmoqda",
+      "4": "\"Medgorodok\"dagi kabi voqea takrorlanmasligi kafolat bormi? Toshkentda issiq suv quvuri bosim",
+      "5": "O'zbekistonda dorilar Qozog'istonga qaraganda qimmat – farmatsevtika bozoriqa qanday omillar ta'sir qilayapti?",
+      "6": "\"O lib qolaman deb o'yladim\" – Toshkentda ilk marta qimirlab qiynab, bo'yiniga jiroyat ilmoqchi bo'lishdi"
+    }
   }
 }
