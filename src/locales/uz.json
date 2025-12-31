@@ -36,5 +36,13 @@
       "7": "Havoni ifloslaydigan korxonalarga muhlat berildi: ular monitoring stansiyasini o'rnati...",
       "8": "Andijonda ichki ishlar xodimi va uning voyaga yetmagan qizi is gazidan vafot etdi"
     }
+  },
+  "photoGallery": {
+    "title": "Foto galereya",
+    "viewAll": "Bo'limga o'tish",
+    "photos": {
+      "1": "Javohir Sindorov Jahon kubogi g'olibi bo'ldi. U finalda Xitoy vakili Vey Yini mag'lub etdi va Jaho...",
+      "2": "Toshkentdagi ekologik vaziyatni yaxshilash uchun maxsus komissiya tuzildi, unga jiddiy vakolatlar..."
+    }
   }
 }
