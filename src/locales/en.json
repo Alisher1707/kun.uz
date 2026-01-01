@@ -86,5 +86,27 @@
         "description": "Judging by the behavior of the Trump administration, this draft was not taken from the ceiling. What is being interpreted as «Trump's Peace Plan»"
       }
     }
+  },
+  "videoNews": {
+    "title": "Video News",
+    "viewAll": "Go to section",
+    "viewMore": "Go to section",
+    "videos": {
+      "1": {
+        "title": "Some trees started blooming. What will happen now? Warm and rainless autumn caused a strange phenomenon"
+      },
+      "2": {
+        "title": "Cars will be issued eco-stickers: \"green\", \"yellow\" and \"red\""
+      },
+      "3": {
+        "title": "Mobile operators are raising prices. Can prices decrease if tax benefits are provided?"
+      },
+      "4": {
+        "title": "Israel launched a major military operation in the northern West Bank"
+      },
+      "5": {
+        "title": "Ukraine's resigned chief negotiator spoke about the US and European plan"
+      }
+    }
   }
 }

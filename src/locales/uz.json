@@ -86,5 +86,27 @@
         "description": "Tramp ma'muriyatidagilarning o'zini tutishiga qaraganda, bu qoralama osmondan olinmagan. «Tramp tinchlik rejasi» sifatida talqin qilinayotgan"
       }
     }
+  },
+  "videoNews": {
+    "title": "Video-yangiliklar",
+    "viewAll": "Bo'limga o'tish",
+    "viewMore": "Bo'limga o'tish",
+    "videos": {
+      "1": {
+        "title": "Ayrim daraxtlar gullay boshladi. Endi nima bo'ladi? Issiq va yomg'irsiz kuz ajib hodisani keltirib chiqardi"
+      },
+      "2": {
+        "title": "Avtomobillarga ekostikerlar beriladi: \"yashil\", \"sariq\" va \"qizil\""
+      },
+      "3": {
+        "title": "Mobil operatorlar narxlarni oshirmoqda. Soliq imtiyoz berilsa, narxlar pasayishi mumkinmi?"
+      },
+      "4": {
+        "title": "Isroil G'arbiy sohilning shimoliy qismida yirik harbiy operatsiyani boshladi"
+      },
+      "5": {
+        "title": "Ukrainaning iste'foga chiqqan bosh muzokarachi AQSh va Evropa rejasi haqida gapirib berdi"
+      }
+    }
   }
 }
