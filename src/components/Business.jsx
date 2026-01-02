@@ -23,7 +23,7 @@ const Business = () => {
   ];
 
   return (
-    <div className="w-full bg-white py-10">
+    <div className="w-full bg-white py-10 mb-12">
       <div className="max-w-[1400px] mx-auto px-16">
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
