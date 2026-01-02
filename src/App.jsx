@@ -7,6 +7,7 @@ import Survey from './components/Survey';
 import Articles from './components/Articles';
 import VideoNews from './components/VideoNews';
 import Interviews from './components/Interviews';
+import Business from './components/Business';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Articles />
       <VideoNews />
       <Interviews />
+      <Business />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Content will go here */}
       </main>

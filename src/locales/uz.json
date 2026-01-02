@@ -130,5 +130,23 @@
         "description": "\"Qora dushanba\", \"qora payshanba\" – dunyoda turlicha nomli moliyaviy inqirozlar bo'lib turadi. Bu inqirozlarning sababi..."
       }
     }
+  },
+  "business": {
+    "title": "Kun.uz biznes",
+    "viewAll": "Bo'limga o'tish",
+    "items": {
+      "1": {
+        "title": "TMK – O'zbekiston va AQSh munosabatlarida kritik mineral..."
+      },
+      "2": {
+        "title": "Har bir pikselda bayram: ROG Yangi yilda qanday qilib o'yin..."
+      },
+      "3": {
+        "title": "\"Ipak yo'lida turizm\": Toshkent xalqaro yarmarkasida Sankt..."
+      },
+      "4": {
+        "title": "TMK – O'zbekiston va AQSh munosabatlarida kritik mineral..."
+      }
+    }
   }
 }

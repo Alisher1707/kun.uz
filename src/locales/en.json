@@ -130,5 +130,23 @@
         "description": "\"Black Monday\", \"Black Friday\" – financial crises with different names occur in the world. The reason for these crises..."
       }
     }
+  },
+  "business": {
+    "title": "Kun.uz business",
+    "viewAll": "Go to section",
+    "items": {
+      "1": {
+        "title": "TMK – critical mineral in Uzbekistan-US relations..."
+      },
+      "2": {
+        "title": "Holiday in every pixel: how ROG celebrates New Year in games..."
+      },
+      "3": {
+        "title": "\"Tourism on the Silk Road\": St. Petersburg at Tashkent International Fair..."
+      },
+      "4": {
+        "title": "TMK – critical mineral in Uzbekistan-US relations..."
+      }
+    }
   }
 }
