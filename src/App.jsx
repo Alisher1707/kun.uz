@@ -8,6 +8,8 @@ import Articles from './components/Articles';
 import VideoNews from './components/VideoNews';
 import Interviews from './components/Interviews';
 import Business from './components/Business';
+import AppDownload from './components/AppDownload';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,9 +24,8 @@ function App() {
       <VideoNews />
       <Interviews />
       <Business />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Content will go here */}
-      </main>
+      <AppDownload />
+      <Footer />
     </div>
   );
 }

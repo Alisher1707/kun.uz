@@ -148,5 +148,20 @@
         "title": "TMK – критический минерал в отношениях Узбекистана и США..."
       }
     }
+  },
+  "appDownload": {
+    "title": "Будьте всегда в курсе!",
+    "subtitle": "Скачайте мобильные приложения Kun.uz и все новости с вами",
+    "download": "Download",
+    "appStore": "App store",
+    "googlePlay": "Google play"
+  },
+  "footer": {
+    "about": "О сайте",
+    "rss": "RSS",
+    "aloqa": "Контакты",
+    "reklama": "Реклама",
+    "mavzulari": "Темы дня",
+    "jamoasi": "Команда Kun.uz"
   }
 }

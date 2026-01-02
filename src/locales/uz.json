@@ -148,5 +148,20 @@
         "title": "TMK – O'zbekiston va AQSh munosabatlarida kritik mineral..."
       }
     }
+  },
+  "appDownload": {
+    "title": "Har doim xabardor bo'ling!",
+    "subtitle": "Kun.uz mobil ilovalarini ko'chirib oling va barcha yangiliklar siz bilan",
+    "download": "Download",
+    "appStore": "App store",
+    "googlePlay": "Google play"
+  },
+  "footer": {
+    "about": "Sayt haqida",
+    "rss": "RSS",
+    "aloqa": "Aloqa",
+    "reklama": "Reklama",
+    "mavzulari": "Kun mavzulari",
+    "jamoasi": "Kun.uz jamoasi"
   }
 }

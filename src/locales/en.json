@@ -148,5 +148,20 @@
         "title": "TMK – critical mineral in Uzbekistan-US relations..."
       }
     }
+  },
+  "appDownload": {
+    "title": "Stay informed!",
+    "subtitle": "Download Kun.uz mobile apps and all news are with you",
+    "download": "Download",
+    "appStore": "App store",
+    "googlePlay": "Google play"
+  },
+  "footer": {
+    "about": "About",
+    "rss": "RSS",
+    "aloqa": "Contact",
+    "reklama": "Advertising",
+    "mavzulari": "Topics",
+    "jamoasi": "Kun.uz team"
   }
 }
