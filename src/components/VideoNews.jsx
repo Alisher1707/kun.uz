@@ -33,6 +33,8 @@ const VideoNews = () => {
     // Asosiy video bilan almashish
     [newVideos[0], newVideos[actualIndex]] = [newVideos[actualIndex], newVideos[0]];
     setVideos(newVideos);
+    // Play state'ni reset qilish
+    setIsPlaying(false);
   };
 
   return (

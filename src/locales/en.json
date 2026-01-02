@@ -108,5 +108,27 @@
         "title": "Ukraine's resigned chief negotiator spoke about the US and European plan"
       }
     }
+  },
+  "interviews": {
+    "title": "Interviews",
+    "viewAll": "Go to section",
+    "items": {
+      "1": {
+        "title": "Islamic finance – economy not separated from the real market...",
+        "description": "\"Black Monday\", \"Black Friday\" – financial crises with different names occur in the world. The reason for these crises..."
+      },
+      "2": {
+        "title": "Depression, genetics or societal pressure: what drives people to suicide...",
+        "description": "\"Black Monday\", \"Black Friday\" – financial crises with different names occur in the world. The reason for these crises..."
+      },
+      "3": {
+        "title": "\"Set big goals and don't be afraid\" – Uzbek from Harvard...",
+        "description": "\"Black Monday\", \"Black Friday\" – financial crises with different names occur in the world. The reason for these crises..."
+      },
+      "4": {
+        "title": "Farmers face a new challenge: what will happen with moratoriums?",
+        "description": "\"Black Monday\", \"Black Friday\" – financial crises with different names occur in the world. The reason for these crises..."
+      }
+    }
   }
 }

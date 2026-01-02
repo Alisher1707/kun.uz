@@ -108,5 +108,27 @@
         "title": "Ukrainaning iste'foga chiqqan bosh muzokarachi AQSh va Evropa rejasi haqida gapirib berdi"
       }
     }
+  },
+  "interviews": {
+    "title": "Intervyular",
+    "viewAll": "Bo'limga o'tish",
+    "items": {
+      "1": {
+        "title": "Islomiy moliya – real bozordan ajralmagan iqtisodiyot...",
+        "description": "\"Qora dushanba\", \"qora payshanba\" – dunyoda turlicha nomli moliyaviy inqirozlar bo'lib turadi. Bu inqirozlarning sababi..."
+      },
+      "2": {
+        "title": "Depressiya, genetika yoki jamiyat bosimi: odamlarni suitsidga...",
+        "description": "\"Qora dushanba\", \"qora payshanba\" – dunyoda turlicha nomli moliyaviy inqirozlar bo'lib turadi. Bu inqirozlarning sababi..."
+      },
+      "3": {
+        "title": "\"Maqsadni katta qo'yib, qo'rqmaslik kerak\" – Harvardning o'zbek...",
+        "description": "\"Qora dushanba\", \"qora payshanba\" – dunyoda turlicha nomli moliyaviy inqirozlar bo'lib turadi. Bu inqirozlarning sababi..."
+      },
+      "4": {
+        "title": "Fermerlar yana sinov qarshisida: moratoriylar nima bo'ladi?",
+        "description": "\"Qora dushanba\", \"qora payshanba\" – dunyoda turlicha nomli moliyaviy inqirozlar bo'lib turadi. Bu inqirozlarning sababi..."
+      }
+    }
   }
 }
