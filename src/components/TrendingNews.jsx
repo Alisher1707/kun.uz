@@ -97,7 +97,7 @@ const TrendingNews = () => {
               </div>
 
               {/* Content */}
-              <div className="flex flex-col flex-1 pt-4">
+              <div className="flex flex-col flex-1 pt-4 pl-4">
                 {/* Date */}
                 <div className="flex items-center gap-2 mb-3">
                   <svg
