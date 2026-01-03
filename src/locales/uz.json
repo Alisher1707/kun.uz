@@ -163,5 +163,34 @@
     "reklama": "Reklama",
     "mavzulari": "Kun mavzulari",
     "jamoasi": "Kun.uz jamoasi"
+  },
+  "uzbekistanPage": {
+    "heroTitle": "Shavkat Mirziyoyev Gulistonning Bo'ston mahallasini modernizatsiya qilish ishlarini ko'zdan kechirdi",
+    "loadMore": "Yana yuklash",
+    "latestNews": "So'ngi yangiliklar",
+    "viewSection": "Bo'limga o'tish",
+    "newsCards": {
+      "1": "Gulistondagi portlashda halok chiqqan ofitser shaxsini so'ndan berladilar…",
+      "2": "Energetika vazirligi yaratgan iddaa qilingan navbat ishlarga xusudiy tadbirkorga tejaldi…",
+      "3": "Sirdaryo viloyatida Xitoy bilan hamkorlikda avtomobil ishlab chiqarladi…",
+      "4": "Past Darg'omda cho'chqasona egalari havoni ifloslab kelganni aniqlandi…",
+      "5": "Sirdaryo viloyatida «Sultonnovuz» suv ombori quriladi…",
+      "6": "Hafta oxirida yana yomg'ir yog'ishi kutilmoqda, ayrim hududlarda yomg'ir qorga…",
+      "7": "Shavkat Mirziyoyev Sirdaryo viloyatida tashrif buyurishi kutilmoqda…",
+      "8": "Markaziy bank voyaga yetmaganlarning kartadan foydalanish tartibi bo'yicha…",
+      "9": "Vengriyaning \"smart qishloq\" tajribasi Sirdaryo'da sinab ko'rilmoqda…"
+    },
+    "sidebarNews": {
+      "1": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "2": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "3": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "4": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "5": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "6": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "7": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "8": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "9": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
+      "10": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…"
+    }
   }
 }

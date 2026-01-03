@@ -163,5 +163,34 @@
     "reklama": "Advertising",
     "mavzulari": "Topics",
     "jamoasi": "Kun.uz team"
+  },
+  "uzbekistanPage": {
+    "heroTitle": "Shavkat Mirziyoyev reviewed the modernization works of Bostan mahalla in Gulistan",
+    "loadMore": "Load more",
+    "latestNews": "Latest News",
+    "viewSection": "Go to section",
+    "newsCards": {
+      "1": "Identity of officer killed in Gulistan explosion has been established…",
+      "2": "Ministry of Energy provided benefits to private entrepreneur…",
+      "3": "Cars will be manufactured in Syrdarya region in cooperation with China…",
+      "4": "Air pollution by pig farm owners identified in Past Dargom…",
+      "5": "Sultannovuz water reservoir will be built in Syrdarya region…",
+      "6": "Rain is expected on the weekend, in some areas rain with snow…",
+      "7": "Shavkat Mirziyoyev is expected to visit Syrdarya region…",
+      "8": "Central Bank on the procedure for minors to use cards…",
+      "9": "Hungary's \"smart village\" experience is being tested in Syrdarya…"
+    },
+    "sidebarNews": {
+      "1": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "2": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "3": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "4": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "5": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "6": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "7": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "8": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "9": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…",
+      "10": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN…"
+    }
   }
 }
