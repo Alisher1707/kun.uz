@@ -1,5 +1,7 @@
 import Navbar from '../components/Navbar';
 import CategoryMenu from '../components/CategoryMenu';
+import AppDownload from '../components/AppDownload';
+import Footer from '../components/Footer';
 
 const UzbekistanPage = () => {
   // O'zbekiston yangiliklari
@@ -266,6 +268,12 @@ const UzbekistanPage = () => {
           </div>
         </div>
       </div>
+
+      {/* App Download Section */}
+      <AppDownload />
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
