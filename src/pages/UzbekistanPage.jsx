@@ -3,6 +3,7 @@ import CategoryMenu from '../components/CategoryMenu';
 import AppDownload from '../components/AppDownload';
 import Footer from '../components/Footer';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const UzbekistanPage = () => {
   const { t } = useTranslation();
@@ -111,11 +112,11 @@ const UzbekistanPage = () => {
             {/* Left Side - Hero + News Grid */}
             <div className="flex-1">
               {/* Hero Section */}
-              <div className="relative overflow-hidden mb-12">
+              <Link to="/news/hero" className="relative overflow-hidden mb-12 block cursor-pointer group">
                 <img
                   src="/img/ozbekiston-asosiy.png"
                   alt="Hero"
-                  className="w-full h-[670px] object-cover"
+                  className="w-full h-[670px] object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 {/* Category Badge */}
                 <div className="absolute top-0 right-0">
@@ -127,11 +128,11 @@ const UzbekistanPage = () => {
                 </div>
                 {/* Title Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-8 py-6">
-                  <h2 className="text-white text-2xl font-bold leading-snug font-sans">
+                  <h2 className="text-white text-2xl font-bold leading-snug font-sans group-hover:opacity-90 transition-opacity">
                     {t('uzbekistanPage.heroTitle')}
                   </h2>
                 </div>
-              </div>
+              </Link>
 
               {/* News Grid - 3x3 */}
               <div className="grid grid-cols-3 gap-6">

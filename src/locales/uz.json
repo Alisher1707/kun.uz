@@ -176,7 +176,7 @@
       "4": "Past Darg'omda cho'chqasona egalari havoni ifloslab kelganni aniqlandi…",
       "5": "Sirdaryo viloyatida «Sultonnovuz» suv ombori quriladi…",
       "6": "Hafta oxirida yana yomg'ir yog'ishi kutilmoqda, ayrim hududlarda yomg'ir qorga…",
-      "7": "Shavkat Mirziyoyev Sirdaryo viloyatida tashrif buyurishi kutilmoqda…",
+      "7": "Shavkat Mirziyoyev Sirdaryo viloyatiga tashrif buyuradi",
       "8": "Markaziy bank voyaga yetmaganlarning kartadan foydalanish tartibi bo'yicha…",
       "9": "Vengriyaning \"smart qishloq\" tajribasi Sirdaryo'da sinab ko'rilmoqda…"
     },
@@ -192,5 +192,14 @@
       "9": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…",
       "10": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN…"
     }
+  },
+  "newsDetail": {
+    "similarNews": "O'xshash xabarlar",
+    "viewSection": "Bo'limga o'tish",
+    "title": "Shavkat Mirziyoyev bioaksal polipropilen plyonka ishlab chiqaradigan yagona korxona faoliyati bilan tanishdi",
+    "paragraph1": "Prezident \"Sirdaryo\" erkin iqtisodiy zonasida joylashgan, qadoqlash mahsulotlari va bioaksal yo'naltirilgan polipropilen plyonka ishlab chiqaradigan mamlakatdagi yagona Invest Asia korxonasi faoliyati bilan tanishdi. Mazkur korxona Markaziy Osiyoda qadoqlash mahsulotlari ishlab chiqarish bo'yicha yetakchi majmualardan biri hisoblanadi.",
+    "quote1_1": "Qadoqlash mahsulotlari oziq-ovqat, farmatsevtika, sanoat, qurilish, maishiy kimyo kabi ko'plab tarmoqlar uchun zarur xomashyo hisoblanadi. Ularning sifati mahsulotning xavfsiz saqlanishi, transportirovkasi va bozorga o'z vaqtida yetkazilishiga bevosita ta'sir ko'rsatadi.",
+    "quote1_2": "Shu jihatdan Invest Asia kabi yirik quvvatlarning mamlakatda faoliyat yuritishi import xarajatlarini kamaytiradi, ichki bozor barqarorligi ta'minlashga va ishlab chiqaruvchilar xarajatlarini qisqartirishga xizmat qiladi.",
+    "paragraph2": "Invest Asia korxonasining yana bir muhim jihati shundaki, u O'zbekistonda bioaksal yo'naltirilgan polipropilen plyonka ishlab chiqaradigan yagona korxonadir. Ushbu plyonka turi qadoqlash sohasida eng talabgor materiallardan biri bo'lib, qattiqligi va yengiligi bilan ajralib turadi."
   }
 }
