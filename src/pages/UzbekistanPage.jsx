@@ -222,7 +222,7 @@ const UzbekistanPage = () => {
 
             {/* Right Sidebar - So'ngi yangiliklar */}
             <div className="w-[320px] flex-shrink-0">
-              <div className="bg-white p-6 sticky top-4">
+              <div className="bg-[#F5F5F5] p-6">
                 {/* Header */}
                 <div className="flex items-center gap-2 mb-6 pb-4 border-b border-gray-200">
                   <h3 className="text-xl font-bold font-sans" style={{ color: '#010E38' }}>
@@ -257,13 +257,13 @@ const UzbekistanPage = () => {
                     </a>
                   ))}
                 </div>
-
-                {/* Bo'limga o'tish button */}
-                <button className="mt-6 w-full py-3.5 bg-gray-200 text-sm font-medium hover:bg-gray-300 transition-colors flex items-center justify-center gap-2 font-sans" style={{ color: '#010E38' }}>
-                  Bo'limga o'tish
-                  <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
-                </button>
               </div>
+
+              {/* Bo'limga o'tish button - outside sidebar box */}
+              <button className="mt-2 w-full py-4 bg-gray-200 text-sm font-medium hover:bg-gray-300 transition-colors flex items-center justify-center gap-2 font-sans" style={{ color: '#010E38' }}>
+                Bo'limga o'tish
+                <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
+              </button>
             </div>
           </div>
         </div>
