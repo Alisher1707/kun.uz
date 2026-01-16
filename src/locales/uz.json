@@ -21,7 +21,13 @@
     "category": "O'ZBEKISTON",
     "title": "Ekologik farmon: qurilishlar va korxonalar ustidan qat'iy nazorat, sun'iy ko'llar, transport harakatidagi cheklovlar",
     "latestNews": "So'ngi yangiliklar",
-    "viewMore": "Bo'limga o'tish"
+    "viewMore": "Bo'limga o'tish",
+    "latestNewsList": {
+      "1": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
+      "2": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
+      "3": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
+      "4": "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN..."
+    }
   },
   "trending": {
     "title": "Dolzarb xabarlar",

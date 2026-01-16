@@ -7,22 +7,18 @@ const HeroSection = () => {
     {
       id: 1,
       date: '26.11.2025',
-      title: "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
     },
     {
       id: 2,
       date: '26.11.2025',
-      title: "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
     },
     {
       id: 3,
       date: '26.11.2025',
-      title: "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
     },
     {
       id: 4,
       date: '26.11.2025',
-      title: "Ukraina va AQSh tinchlik rejasining kamida 3 ta punktida ixtilof qilmoqda – CNN...",
     },
   ];
 
@@ -95,7 +91,7 @@ const HeroSection = () => {
                         <span className="text-sm text-gray-600">{item.date}</span>
                       </div>
                       <p className="text-base text-black leading-relaxed font-normal">
-                        {item.title}
+                        {t(`hero.latestNewsList.${item.id}`)}
                       </p>
                     </a>
                   ))}

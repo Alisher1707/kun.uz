@@ -21,7 +21,13 @@
     "category": "UZBEKISTAN",
     "title": "Environmental decree: strict control over construction and enterprises, artificial lakes, traffic restrictions",
     "latestNews": "Latest News",
-    "viewMore": "Go to section"
+    "viewMore": "Go to section",
+    "latestNewsList": {
+      "1": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN...",
+      "2": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN...",
+      "3": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN...",
+      "4": "Ukraine and the US disagree on at least 3 points of the peace plan – CNN..."
+    }
   },
   "trending": {
     "title": "Trending News",
