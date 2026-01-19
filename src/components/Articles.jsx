@@ -1,16 +1,35 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { postsAPI } from '../services/api';
 
 const Articles = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const articles = [
-    { id: 1, date: '26.11.2025' },
-    { id: 2, date: '26.11.2025' },
-    { id: 3, date: '26.11.2025' },
-    { id: 4, date: '26.11.2025' },
-    { id: 5, date: '26.11.2025' },
-    { id: 6, date: '26.11.2025' },
-  ];
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        setLoading(true);
+        const data = await postsAPI.getArticles(i18n.language);
+        setArticles(data?.slice(0, 6) || []);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+        setArticles([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, [i18n.language]);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('uz-UZ');
+  };
 
   return (
     <div className="w-full bg-white py-10">
@@ -29,40 +48,48 @@ const Articles = () => {
           </button>
         </div>
 
-        {/* Articles Grid - 3 columns, 2 rows */}
-        <div className="grid grid-cols-3 gap-6">
-          {articles.map((article) => (
-            <a
-              key={article.id}
-              href="#"
-              className="group bg-[#E8E8E8] p-6 hover:shadow-lg transition-all duration-300 flex flex-col"
-            >
-              {/* Date */}
-              <div className="flex items-center gap-2 mb-4">
-                <svg
-                  className="w-4 h-4 flex-shrink-0"
-                  fill="none"
-                  stroke="#000000"
-                  viewBox="0 0 24 24"
-                >
-                  <circle cx="12" cy="12" r="10" strokeWidth="2"/>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
-                </svg>
-                <span className="text-sm font-sans text-[#000000]">{article.date}</span>
-              </div>
+        {/* Articles Grid */}
+        {loading ? (
+          <div className="grid grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="animate-pulse bg-gray-300 p-6 rounded h-48"></div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-3 gap-6">
+            {articles.map((article) => (
+              <Link
+                key={article.id}
+                to={`/news/${article.id}`}
+                className="group bg-[#E8E8E8] p-6 hover:shadow-lg transition-all duration-300 flex flex-col"
+              >
+                {/* Date */}
+                <div className="flex items-center gap-2 mb-4">
+                  <svg
+                    className="w-4 h-4 flex-shrink-0"
+                    fill="none"
+                    stroke="#000000"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
+                  </svg>
+                  <span className="text-sm font-sans text-[#000000]">{formatDate(article.created_at)}</span>
+                </div>
 
-              {/* Title */}
-              <h3 className="text-lg font-bold leading-snug mb-4 font-sans text-[#000000] group-hover:text-[#000000] transition-colors">
-                {t(`articles.items.${article.id}.title`)}
-              </h3>
+                {/* Title */}
+                <h3 className="text-lg font-bold leading-snug mb-4 font-sans text-[#000000] group-hover:text-[#000000] transition-colors">
+                  {article.name}
+                </h3>
 
-              {/* Description */}
-              <p className="text-sm leading-relaxed font-sans text-[#666666] line-clamp-3">
-                {t(`articles.items.${article.id}.description`)}
-              </p>
-            </a>
-          ))}
-        </div>
+                {/* Description */}
+                <p className="text-sm leading-relaxed font-sans text-[#666666] line-clamp-3">
+                  {article.body}
+                </p>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
