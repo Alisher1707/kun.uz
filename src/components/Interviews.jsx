@@ -1,29 +1,10 @@
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { postsAPI } from '../services/api';
+import { usePostsByFlag } from '../hooks/usePosts';
 
 const Interviews = () => {
-  const { t, i18n } = useTranslation();
-  const [interviews, setInterviews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchInterviews = async () => {
-      try {
-        setLoading(true);
-        const data = await postsAPI.getInterviews(i18n.language);
-        setInterviews(data?.slice(0, 4) || []);
-      } catch (error) {
-        console.error('Error fetching interviews:', error);
-        setInterviews([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchInterviews();
-  }, [i18n.language]);
+  const { t } = useTranslation();
+  const { posts: interviews, loading } = usePostsByFlag('is_interview');
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -65,7 +46,7 @@ const Interviews = () => {
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-6">
-            {interviews.map((interview) => (
+            {interviews.slice(0, 4).map((interview) => (
               <Link
                 key={interview.id}
                 to={`/news/${interview.id}`}

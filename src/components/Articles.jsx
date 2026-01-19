@@ -1,29 +1,10 @@
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { postsAPI } from '../services/api';
+import { usePostsByFlag } from '../hooks/usePosts';
 
 const Articles = () => {
-  const { t, i18n } = useTranslation();
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        setLoading(true);
-        const data = await postsAPI.getArticles(i18n.language);
-        setArticles(data?.slice(0, 6) || []);
-      } catch (error) {
-        console.error('Error fetching articles:', error);
-        setArticles([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchArticles();
-  }, [i18n.language]);
+  const { t } = useTranslation();
+  const { posts: articles, loading } = usePostsByFlag('is_articles');
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
@@ -57,7 +38,7 @@ const Articles = () => {
           </div>
         ) : (
           <div className="grid grid-cols-3 gap-6">
-            {articles.map((article) => (
+            {articles.slice(0, 6).map((article) => (
               <Link
                 key={article.id}
                 to={`/news/${article.id}`}

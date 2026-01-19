@@ -12,9 +12,13 @@ const PhotoGallery = () => {
     const fetchPhotos = async () => {
       try {
         setLoading(true);
-        // is_gallery flag bo'yicha postlarni olamiz
-        const data = await postsAPI.getGallery(i18n.language);
-        setPhotos(data?.slice(0, 2) || []);
+        // ✅ Bitta endpoint - barcha postlar
+        const response = await postsAPI.getAllFront(i18n.language);
+        const allPosts = response?.posts || [];
+
+        // ✅ Frontend'da is_gallery filter qilish
+        const galleryPosts = allPosts.filter(post => post.flags?.is_gallery === true);
+        setPhotos(galleryPosts.slice(0, 2));
       } catch (error) {
         console.error('Error fetching gallery:', error);
         setPhotos([]);

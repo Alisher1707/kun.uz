@@ -12,10 +12,13 @@ const TrendingNews = () => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        // is_kun_uz flag bo'yicha postlarni olamiz (Dolzarb xabarlar)
-        const data = await postsAPI.getKunUz(i18n.language);
-        // Birinchi 8 ta postni olamiz
-        setNewsItems(data?.slice(0, 8) || []);
+        // ✅ Bitta endpoint - barcha postlar
+        const response = await postsAPI.getAllFront(i18n.language);
+        const allPosts = response?.posts || [];
+
+        // ✅ Frontend'da is_main filter qilish
+        const mainPosts = allPosts.filter(post => post.flags?.is_main === true);
+        setNewsItems(mainPosts.slice(0, 8));
       } catch (error) {
         console.error('Error fetching posts:', error);
         setNewsItems([]);

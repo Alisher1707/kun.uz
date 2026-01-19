@@ -1,41 +1,37 @@
 import { useTranslation } from 'react-i18next';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Play } from 'lucide-react';
+import { useYoutubePosts } from '../hooks/usePosts';
 
 const VideoNews = () => {
   const { t } = useTranslation();
-  const mainVideoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [videos, setVideos] = useState([
-    { id: 1, date: '26.11.2025', video: '/video/video-1.mp4' },
-    { id: 2, date: '26.11.2025', video: '/video/video-2.mp4' },
-    { id: 3, date: '26.11.2025', video: '/video/video-3.mp4' },
-    { id: 4, date: '26.11.2025', video: '/video/video-4.mp4' },
-    { id: 5, date: '26.11.2025', video: '/video/video-5.mp4' },
-  ]);
+  const { posts: youtubePosts, loading } = useYoutubePosts();
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
 
-  const handlePlayVideo = (videoRef) => {
-    if (videoRef && videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      } else {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
+  const handleVideoSelect = (index) => {
+    setSelectedVideoIndex(index);
   };
 
-  const handleVideoSwap = (sidebarIndex) => {
-    const newVideos = [...videos];
-    // Sidebar'dagi videoning asl indexi (0 asosiy, shuning uchun +1)
-    const actualIndex = sidebarIndex + 1;
-    // Asosiy video bilan almashish
-    [newVideos[0], newVideos[actualIndex]] = [newVideos[actualIndex], newVideos[0]];
-    setVideos(newVideos);
-    // Play state'ni reset qilish
-    setIsPlaying(false);
+  const getYoutubeEmbedUrl = (url) => {
+    if (!url) return '';
+    // YouTube URL'ni embed formatga o'tkazish
+    const videoId = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
   };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('uz-UZ');
+  };
+
+  // Agar postlar yo'q yoki yuklanayotgan bo'lsa
+  if (loading || !youtubePosts || youtubePosts.length === 0) {
+    return null; // yoki loading komponentini ko'rsatish
+  }
+
+  const selectedVideo = youtubePosts[selectedVideoIndex];
+  const sideVideos = youtubePosts.filter((_, index) => index !== selectedVideoIndex).slice(0, 4);
 
   return (
     <div className="w-full bg-[#1A1A1A] py-16">
@@ -53,27 +49,19 @@ const VideoNews = () => {
         {/* Video Grid */}
         <div className="grid grid-cols-[2fr_1fr] gap-6">
           {/* Main Video - Left Side */}
-          <div className="relative group cursor-pointer overflow-hidden" onClick={() => handlePlayVideo(mainVideoRef)}>
+          <div className="relative group overflow-hidden">
             <div className="relative aspect-video bg-gray-800">
-              <video
-                ref={mainVideoRef}
-                src={videos[0].video}
+              <iframe
+                src={getYoutubeEmbedUrl(selectedVideo?.youtube_url)}
                 className="w-full h-full object-cover"
-                preload="metadata"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
               />
-              {/* Play Button Overlay */}
-              {!isPlaying && (
-                <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group-hover:bg-opacity-40 transition-all">
-                  <div className="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <Play className="w-7 h-7 text-white fill-white" />
-                  </div>
-                </div>
-              )}
             </div>
             {/* Main Video Title */}
             <div className="absolute bottom-0 left-0 right-0 bg-black/30 p-6 pointer-events-none">
               <h3 className="text-xl font-bold font-sans text-white leading-snug">
-                {t(`videoNews.videos.${videos[0].id}.title`)}
+                {selectedVideo?.name}
               </h3>
             </div>
           </div>
@@ -82,19 +70,25 @@ const VideoNews = () => {
           <div className="flex flex-col gap-1">
             {/* Videos Container */}
             <div className="bg-[#1a1f2e] p-4">
-              {videos.slice(1).map((video, index) => (
+              {sideVideos.map((video) => (
                 <div
                   key={video.id}
-                  onClick={() => handleVideoSwap(index)}
+                  onClick={() => handleVideoSelect(youtubePosts.findIndex(p => p.id === video.id))}
                   className="group flex items-start gap-4 hover:bg-[#2A2A2A] p-3 transition-colors rounded cursor-pointer"
                 >
                   {/* Video Thumbnail */}
                   <div className="relative w-32 h-20 flex-shrink-0 bg-gray-800 overflow-hidden rounded">
-                    <video
-                      src={video.video}
-                      className="w-full h-full object-cover"
-                      preload="metadata"
-                    />
+                    {video.image ? (
+                      <img
+                        src={video.image}
+                        alt={video.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gray-700">
+                        <Play className="w-8 h-8 text-white" />
+                      </div>
+                    )}
                     {/* Small Play Button */}
                     <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
                       <div className="w-7 h-7 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
@@ -116,12 +110,12 @@ const VideoNews = () => {
                         <circle cx="12" cy="12" r="10" strokeWidth="2"/>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
                       </svg>
-                      <span className="text-xs font-sans text-[#999999]">{video.date}</span>
+                      <span className="text-xs font-sans text-[#999999]">{formatDate(video.created_at)}</span>
                     </div>
 
                     {/* Title */}
                     <h4 className="text-sm font-medium font-sans text-white leading-snug line-clamp-2 group-hover:text-gray-200">
-                      {t(`videoNews.videos.${video.id}.title`)}
+                      {video.name}
                     </h4>
                   </div>
                 </div>

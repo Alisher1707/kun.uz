@@ -24,24 +24,14 @@ const fetchAPI = async (endpoint, options = {}) => {
 
 // Posts API
 export const postsAPI = {
-  // Barcha postlar
-  getAll: (lang = 'uz') => fetchAPI(`/posts?lang=${lang}`),
+  // Barcha postlar (frontend uchun) - ASOSIY ENDPOINT
+  getAllFront: (lang = 'uz') => fetchAPI(`/front/posts?lang=${lang}`),
 
   // Bitta post
   getById: (id, lang = 'uz') => fetchAPI(`/posts/${id}?lang=${lang}`),
 
-  // Asosiy sahifa uchun barcha flaglar (bitta request)
-  getMainPosts: (lang = 'uz') => fetchAPI(`/main?lang=${lang}`),
-
-  // Har bir flag uchun alohida metodlar
-  getMain: (lang = 'uz') => fetchAPI(`/flag/is_main?lang=${lang}`),
-  getLatest: (lang = 'uz') => fetchAPI(`/flag/is_latest?lang=${lang}`),
-  getGallery: (lang = 'uz') => fetchAPI(`/flag/is_gallery?lang=${lang}`),
-  getKunUz: (lang = 'uz') => fetchAPI(`/flag/is_kun_uz?lang=${lang}`),
-  getInterviews: (lang = 'uz') => fetchAPI(`/flag/is_interview?lang=${lang}`),
-  getBusiness: (lang = 'uz') => fetchAPI(`/flag/is_business?lang=${lang}`),
-  getCarousel: (lang = 'uz') => fetchAPI(`/flag/is_carousel?lang=${lang}`),
-  getArticles: (lang = 'uz') => fetchAPI(`/flag/is_articles?lang=${lang}`),
+  // ❌ Flag metodlari o'chirildi - frontend o'zi filter qiladi
+  // Frontend categorizePostsByFlags() dan foydalanadi
 };
 
 // Categories API

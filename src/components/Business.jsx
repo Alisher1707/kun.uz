@@ -1,29 +1,10 @@
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { postsAPI } from '../services/api';
+import { usePostsByFlag } from '../hooks/usePosts';
 
 const Business = () => {
-  const { t, i18n } = useTranslation();
-  const [businessNews, setBusinessNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchBusiness = async () => {
-      try {
-        setLoading(true);
-        const data = await postsAPI.getBusiness(i18n.language);
-        setBusinessNews(data?.slice(0, 4) || []);
-      } catch (error) {
-        console.error('Error fetching business:', error);
-        setBusinessNews([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBusiness();
-  }, [i18n.language]);
+  const { t } = useTranslation();
+  const { posts: businessNews, loading } = usePostsByFlag('is_business');
 
   return (
     <div className="w-full bg-white py-10 mb-12">
@@ -51,7 +32,7 @@ const Business = () => {
           </div>
         ) : (
           <div className="grid grid-cols-4 gap-6">
-            {businessNews.map((item) => (
+            {businessNews.slice(0, 4).map((item) => (
               <Link
                 key={item.id}
                 to={`/news/${item.id}`}

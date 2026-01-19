@@ -1,46 +1,40 @@
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { postsAPI } from '../services/api';
 
 const Survey = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [newsItems, setNewsItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const newsItems = [
-    {
-      id: 1,
-      image: '/img/kun.uz-1.png',
-      category: t('hero.category'),
-      date: '26.11.2025',
-    },
-    {
-      id: 2,
-      image: '/img/kun.uz-2.png',
-      category: t('hero.category'),
-      date: '26.11.2025',
-    },
-    {
-      id: 3,
-      image: '/img/kun.uz-3.png',
-      category: t('hero.category'),
-      date: '26.11.2025',
-    },
-    {
-      id: 4,
-      image: '/img/kun.uz-4.png',
-      category: t('hero.category'),
-      date: '26.11.2025',
-    },
-    {
-      id: 5,
-      image: '/img/kun.uz-5.png',
-      category: t('hero.category'),
-      date: '26.11.2025',
-    },
-    {
-      id: 6,
-      image: '/img/kun.uz-6.png',
-      category: t('hero.category'),
-      date: '26.11.2025',
-    },
-  ];
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        // ✅ Bitta endpoint - barcha postlar
+        const response = await postsAPI.getAllFront(i18n.language);
+        const allPosts = response?.posts || [];
+
+        // ✅ Frontend'da is_kun_uz filter qilish
+        const kunUzPosts = allPosts.filter(post => post.flags?.is_kun_uz === true);
+        setNewsItems(kunUzPosts.slice(0, 6));
+      } catch (error) {
+        console.error('Error fetching kun.uz posts:', error);
+        setNewsItems([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, [i18n.language]);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('uz-UZ');
+  };
 
   return (
     <div className="w-full bg-[#F7F7F7] py-10">
@@ -60,54 +54,71 @@ const Survey = () => {
         </div>
 
         {/* News Grid - 3 columns, 2 rows */}
-        <div className="grid grid-cols-3 gap-6">
-          {newsItems.map((item) => (
-            <a
-              key={item.id}
-              href="#"
-              className="group flex flex-col bg-white hover:shadow-lg transition-shadow duration-300"
-            >
-              {/* Image Container */}
-              <div className="relative overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-[270px] object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                {/* Category Badge */}
-                <div className="absolute top-0 right-0">
-                  <div className="bg-black/60 px-4 py-2">
-                    <span className="text-xs font-bold text-white tracking-wider font-sans">
-                      {item.category}
-                    </span>
+        {loading ? (
+          <div className="grid grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <div key={i} className="animate-pulse">
+                <div className="h-[270px] bg-gray-300 rounded mb-4"></div>
+                <div className="h-4 bg-gray-300 rounded mb-2"></div>
+                <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-3 gap-6">
+            {newsItems.map((item) => (
+              <Link
+                key={item.id}
+                to={`/news/${item.id}`}
+                className="group flex flex-col bg-white hover:shadow-lg transition-shadow duration-300"
+              >
+                {/* Image Container */}
+                <div className="relative overflow-hidden">
+                  <img
+                    src={item.image || '/img/placeholder.png'}
+                    alt={item.name}
+                    className="w-full h-[270px] object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.target.src = '/img/placeholder.png';
+                    }}
+                  />
+                  {/* Category Badge */}
+                  {item.category && (
+                    <div className="absolute top-0 right-0">
+                      <div className="bg-black/60 px-4 py-2">
+                        <span className="text-xs font-bold text-white tracking-wider font-sans">
+                          {item.category.name}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col flex-1 pt-4 px-4 pb-4">
+                  {/* Date */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <svg
+                      className="w-4 h-4 flex-shrink-0"
+                      fill="none"
+                      stroke="#000000"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
+                    </svg>
+                    <span className="text-sm font-sans text-[#000000]">{formatDate(item.created_at)}</span>
                   </div>
-                </div>
-              </div>
 
-              {/* Content */}
-              <div className="flex flex-col flex-1 pt-4 px-4 pb-4">
-                {/* Date */}
-                <div className="flex items-center gap-2 mb-3">
-                  <svg
-                    className="w-4 h-4 flex-shrink-0"
-                    fill="none"
-                    stroke="#000000"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="12" cy="12" r="10" strokeWidth="2"/>
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
-                  </svg>
-                  <span className="text-sm font-sans text-[#000000]">{item.date}</span>
+                  {/* Title */}
+                  <h3 className="text-base leading-relaxed font-normal line-clamp-3 transition-colors font-sans text-[#000000] hover:text-[#000000]">
+                    {item.body || item.name}
+                  </h3>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-base leading-relaxed font-normal line-clamp-3 transition-colors font-sans text-[#000000] hover:text-[#000000]">
-                  {t(`survey.news.${item.id}`)}
-                </h3>
-              </div>
-            </a>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
