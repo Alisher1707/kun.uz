@@ -1,34 +1,24 @@
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { postsAPI } from '../services/api';
 
-const PhotoGallery = () => {
+const PhotoGallery = ({ posts = [] }) => {
   const { t, i18n } = useTranslation();
-  const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        setLoading(true);
-        // ✅ Bitta endpoint - barcha postlar
-        const response = await postsAPI.getAllFront(i18n.language);
-        const allPosts = response?.posts || [];
+  const getPostName = (post) => {
+    const lang = i18n.language;
+    return post[`name_${lang}`] || post.name_uz || post.name || '';
+  };
 
-        // ✅ Frontend'da is_gallery filter qilish
-        const galleryPosts = allPosts.filter(post => post.flags?.is_gallery === true);
-        setPhotos(galleryPosts.slice(0, 2));
-      } catch (error) {
-        console.error('Error fetching gallery:', error);
-        setPhotos([]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const getPostBody = (post) => {
+    const lang = i18n.language;
+    return post[`body_${lang}`] || post.body_uz || post.body || '';
+  };
 
-    fetchPhotos();
-  }, [i18n.language]);
+  const getCategoryName = (category) => {
+    if (!category) return '';
+    const lang = i18n.language;
+    return category[`name_${lang}`] || category.name_uz || category.name || '';
+  };
 
   return (
     <div className="w-full bg-white py-10">
@@ -48,17 +38,9 @@ const PhotoGallery = () => {
         </div>
 
         {/* Photo Grid */}
-        {loading ? (
-          <div className="grid grid-cols-2 gap-6">
-            {[1, 2].map((i) => (
-              <div key={i} className="animate-pulse">
-                <div className="h-[450px] bg-gray-300 rounded"></div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-6">
-            {photos.map((photo) => (
+        <div className="grid grid-cols-2 gap-6">
+          {posts.length > 0 ? (
+            posts.slice(0, 2).map((photo) => (
               <Link
                 key={photo.id}
                 to={`/news/${photo.id}`}
@@ -68,7 +50,7 @@ const PhotoGallery = () => {
                 <div className="relative overflow-hidden">
                   <img
                     src={photo.image || '/img/placeholder.png'}
-                    alt={photo.name}
+                    alt={getPostName(photo)}
                     className="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
                       e.target.src = '/img/placeholder.png';
@@ -80,7 +62,7 @@ const PhotoGallery = () => {
                     <div className="absolute top-0 right-0">
                       <div className="bg-black/60 px-6 py-3">
                         <span className="text-xs font-bold text-white tracking-wider font-sans">
-                          {photo.category.name}
+                          {getCategoryName(photo.category)}
                         </span>
                       </div>
                     </div>
@@ -89,14 +71,18 @@ const PhotoGallery = () => {
                   {/* Text Overlay at Bottom */}
                   <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-8 py-6">
                     <p className="text-white text-lg font-normal leading-relaxed font-sans">
-                      {photo.body || photo.name}
+                      {getPostBody(photo) || getPostName(photo)}
                     </p>
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        )}
+            ))
+          ) : (
+            <div className="col-span-2 text-center py-12">
+              <p className="text-gray-500">Fotogalereya topilmadi</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

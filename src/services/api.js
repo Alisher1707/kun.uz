@@ -27,8 +27,8 @@ export const postsAPI = {
   // Barcha postlar (frontend uchun) - ASOSIY ENDPOINT
   getAllFront: (lang = 'uz') => fetchAPI(`/front/posts?lang=${lang}`),
 
-  // Bitta post
-  getById: (id, lang = 'uz') => fetchAPI(`/posts/${id}?lang=${lang}`),
+  // Bitta post - Frontend API endpoint
+  getById: (id, lang = 'uz') => fetchAPI(`/front/posts/${id}?lang=${lang}`),
 
   // ❌ Flag metodlari o'chirildi - frontend o'zi filter qiladi
   // Frontend categorizePostsByFlags() dan foydalanadi

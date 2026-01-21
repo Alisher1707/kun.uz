@@ -1,10 +1,13 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { usePostsByFlag } from '../hooks/usePosts';
 
-const Business = () => {
-  const { t } = useTranslation();
-  const { posts: businessNews, loading } = usePostsByFlag('is_business');
+const Business = ({ posts = [] }) => {
+  const { t, i18n } = useTranslation();
+
+  const getPostName = (post) => {
+    const lang = i18n.language;
+    return post[`name_${lang}`] || post.name_uz || post.name || '';
+  };
 
   return (
     <div className="w-full bg-white py-10 mb-12">
@@ -17,22 +20,19 @@ const Business = () => {
             </h2>
             <span className="w-2 h-2 bg-red-600 rounded-full"></span>
           </div>
-          <button className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]">
+          <Link
+            to="/"
+            className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
+          >
             {t('business.viewAll')}
             <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
 
         {/* Business Grid - 4 columns */}
-        {loading ? (
-          <div className="grid grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="animate-pulse bg-gray-300 h-[260px] rounded"></div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-4 gap-6">
-            {businessNews.slice(0, 4).map((item) => (
+        <div className="grid grid-cols-4 gap-6">
+          {posts.length > 0 ? (
+            posts.slice(0, 4).map((item) => (
               <Link
                 key={item.id}
                 to={`/news/${item.id}`}
@@ -40,27 +40,34 @@ const Business = () => {
               >
                 {/* Image Container */}
                 <div className="relative overflow-hidden mb-4 h-[180px]">
-                  <img
-                    src={item.image || '/img/placeholder.png'}
-                    alt={item.name}
-                    className="w-full h-full object-fill group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.src = '/img/placeholder.png';
-                    }}
-                  />
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt={getPostName(item)}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                      <span className="text-gray-500">Rasm yo'q</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-col flex-1 px-4 pb-4">
                   {/* Title */}
                   <h3 className="text-base leading-relaxed font-normal line-clamp-3 transition-colors font-sans text-[#000000] hover:text-[#000000]">
-                    {item.name}
+                    {getPostName(item)}
                   </h3>
                 </div>
               </Link>
-            ))}
-          </div>
-        )}
+            ))
+          ) : (
+            <div className="col-span-4 text-center py-12">
+              <p className="text-gray-500">Biznes yangiliklari topilmadi</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

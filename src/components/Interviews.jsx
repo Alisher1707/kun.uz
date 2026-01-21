@@ -1,15 +1,23 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { usePostsByFlag } from '../hooks/usePosts';
 
-const Interviews = () => {
-  const { t } = useTranslation();
-  const { posts: interviews, loading } = usePostsByFlag('is_interview');
+const Interviews = ({ posts = [] }) => {
+  const { t, i18n } = useTranslation();
 
   const formatDate = (dateString) => {
     if (!dateString) return '';
     const date = new Date(dateString);
     return date.toLocaleDateString('uz-UZ');
+  };
+
+  const getPostName = (post) => {
+    const lang = i18n.language;
+    return post[`name_${lang}`] || post.name_uz || post.name || '';
+  };
+
+  const getPostBody = (post) => {
+    const lang = i18n.language;
+    return post[`body_${lang}`] || post.body_uz || post.body || '';
   };
 
   return (
@@ -23,30 +31,19 @@ const Interviews = () => {
             </h2>
             <span className="w-2 h-2 bg-red-600 rounded-full"></span>
           </div>
-          <button className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]">
+          <Link
+            to="/"
+            className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
+          >
             {t('interviews.viewAll')}
             <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
-          </button>
+          </Link>
         </div>
 
         {/* Interviews Grid - 2x2 */}
-        {loading ? (
-          <div className="grid grid-cols-2 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex gap-6 animate-pulse">
-                <div className="w-[290px] h-[200px] bg-gray-300 rounded"></div>
-                <div className="flex-1">
-                  <div className="h-4 bg-gray-300 rounded w-24 mb-3"></div>
-                  <div className="h-6 bg-gray-300 rounded mb-2"></div>
-                  <div className="h-4 bg-gray-300 rounded w-full mb-2"></div>
-                  <div className="h-4 bg-gray-300 rounded w-3/4"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 gap-6">
-            {interviews.slice(0, 4).map((interview) => (
+        <div className="grid grid-cols-2 gap-6">
+          {posts.length > 0 ? (
+            posts.slice(0, 4).map((interview) => (
               <Link
                 key={interview.id}
                 to={`/news/${interview.id}`}
@@ -54,14 +51,17 @@ const Interviews = () => {
               >
                 {/* Image Container */}
                 <div className="relative overflow-hidden w-[290px] flex-shrink-0">
-                  <img
-                    src={interview.image || '/img/placeholder.png'}
-                    alt={interview.name}
-                    className="w-full h-[200px] object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.target.src = '/img/placeholder.png';
-                    }}
-                  />
+                  {interview.image ? (
+                    <img
+                      src={interview.image}
+                      alt={getPostName(interview)}
+                      className="w-full h-[200px] object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <div className="w-full h-[200px] bg-gray-200 flex items-center justify-center">
+                      <span className="text-gray-400">Rasm yo'q</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Content */}
@@ -82,18 +82,22 @@ const Interviews = () => {
 
                   {/* Title */}
                   <h3 className="text-lg font-bold leading-snug mb-3 font-sans text-[#000000] group-hover:text-[#000000] transition-colors">
-                    {interview.name}
+                    {getPostName(interview)}
                   </h3>
 
                   {/* Description */}
                   <p className="text-sm leading-relaxed font-sans text-[#666666] line-clamp-3">
-                    {interview.body}
+                    {getPostBody(interview)}
                   </p>
                 </div>
               </Link>
-            ))}
-          </div>
-        )}
+            ))
+          ) : (
+            <div className="col-span-2 text-center py-12">
+              <p className="text-gray-500">Intervyular topilmadi</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

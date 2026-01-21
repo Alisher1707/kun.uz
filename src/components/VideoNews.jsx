@@ -1,11 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Play } from 'lucide-react';
-import { useYoutubePosts } from '../hooks/usePosts';
 
-const VideoNews = () => {
-  const { t } = useTranslation();
-  const { posts: youtubePosts, loading } = useYoutubePosts();
+const VideoNews = ({ posts = [] }) => {
+  const { t, i18n } = useTranslation();
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
 
   const handleVideoSelect = (index) => {
@@ -14,7 +12,6 @@ const VideoNews = () => {
 
   const getYoutubeEmbedUrl = (url) => {
     if (!url) return '';
-    // YouTube URL'ni embed formatga o'tkazish
     const videoId = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/)?.[1];
     return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
   };
@@ -25,13 +22,17 @@ const VideoNews = () => {
     return date.toLocaleDateString('uz-UZ');
   };
 
-  // Agar postlar yo'q yoki yuklanayotgan bo'lsa
-  if (loading || !youtubePosts || youtubePosts.length === 0) {
-    return null; // yoki loading komponentini ko'rsatish
+  const getPostName = (post) => {
+    const lang = i18n.language;
+    return post[`name_${lang}`] || post.name_uz || post.name || '';
+  };
+
+  if (!posts || posts.length === 0) {
+    return null;
   }
 
-  const selectedVideo = youtubePosts[selectedVideoIndex];
-  const sideVideos = youtubePosts.filter((_, index) => index !== selectedVideoIndex).slice(0, 4);
+  const selectedVideo = posts[selectedVideoIndex];
+  const sideVideos = posts.filter((_, index) => index !== selectedVideoIndex).slice(0, 4);
 
   return (
     <div className="w-full bg-[#1A1A1A] py-16">
@@ -56,12 +57,13 @@ const VideoNews = () => {
                 className="w-full h-full object-cover"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                title={getPostName(selectedVideo)}
               />
             </div>
             {/* Main Video Title */}
             <div className="absolute bottom-0 left-0 right-0 bg-black/30 p-6 pointer-events-none">
               <h3 className="text-xl font-bold font-sans text-white leading-snug">
-                {selectedVideo?.name}
+                {getPostName(selectedVideo)}
               </h3>
             </div>
           </div>
@@ -73,7 +75,7 @@ const VideoNews = () => {
               {sideVideos.map((video) => (
                 <div
                   key={video.id}
-                  onClick={() => handleVideoSelect(youtubePosts.findIndex(p => p.id === video.id))}
+                  onClick={() => handleVideoSelect(posts.findIndex(p => p.id === video.id))}
                   className="group flex items-start gap-4 hover:bg-[#2A2A2A] p-3 transition-colors rounded cursor-pointer"
                 >
                   {/* Video Thumbnail */}
@@ -81,7 +83,7 @@ const VideoNews = () => {
                     {video.image ? (
                       <img
                         src={video.image}
-                        alt={video.name}
+                        alt={getPostName(video)}
                         className="w-full h-full object-cover"
                       />
                     ) : (
@@ -115,14 +117,14 @@ const VideoNews = () => {
 
                     {/* Title */}
                     <h4 className="text-sm font-medium font-sans text-white leading-snug line-clamp-2 group-hover:text-gray-200">
-                      {video.name}
+                      {getPostName(video)}
                     </h4>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* View All Button - Separate from sidebar */}
+            {/* View All Button */}
             <button className="py-4 px-6 bg-[#1a1f2e] text-center font-medium text-sm hover:bg-[#252b3d] transition-colors flex items-center justify-center gap-2 text-white font-sans">
               {t('videoNews.viewMore')}
               <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5 brightness-0 invert" />
