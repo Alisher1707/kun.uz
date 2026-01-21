@@ -48,7 +48,7 @@ const CategoryMenu = () => {
     return (
       <div className="w-full bg-[#F7F7F7] border-b border-gray-100">
         <div className="w-full px-16">
-          <div className="flex items-center gap-12 py-7 overflow-x-auto ml-28">
+          <div className="flex items-center gap-12 py-7 overflow-x-auto ml-60">
             <div className="animate-pulse flex gap-12">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="h-6 w-20 bg-gray-300 rounded"></div>
@@ -63,7 +63,7 @@ const CategoryMenu = () => {
   return (
     <div className="w-full bg-[#F7F7F7] border-b border-gray-100">
       <div className="w-full px-16">
-        <div className="flex items-center gap-12 py-7 overflow-x-auto ml-28">
+        <div className="flex items-center gap-12 py-7 overflow-x-auto ml-60">
           {categories.map((category) => {
             const isActive = location.pathname === category.path || (category.id === 0 && location.pathname === '/');
 
