@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { adminAPI } from '../../services/api';
 
 const LoginPage = () => {
   const { t } = useTranslation();
@@ -10,17 +11,30 @@ const LoginPage = () => {
     password: '',
   });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setLoading(true);
 
-    // Simple authentication (demo purposes)
-    if (formData.username === 'admin' && formData.password === 'admin123') {
-      localStorage.setItem('isAdminAuthenticated', 'true');
-      navigate('/admin/dashboard');
-    } else {
-      setError(t('admin.login.error'));
+    try {
+      // ✅ Backend API bilan login
+      const response = await adminAPI.login(formData);
+
+      if (response.message === 'Login successful') {
+        // ✅ Muvaffaqiyatli login
+        localStorage.setItem('isAdminAuthenticated', 'true');
+        localStorage.setItem('adminUser', JSON.stringify(response.admin));
+        navigate('/admin/dashboard');
+      } else {
+        setError(response.message || t('admin.login.error'));
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError(t('admin.login.error') || 'Login yoki parol xato');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -91,9 +105,10 @@ const LoginPage = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+              disabled={loading}
+              className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
             >
-              {t('admin.login.submit')}
+              {loading ? 'Yuklanmoqda...' : t('admin.login.submit')}
             </button>
           </form>
 

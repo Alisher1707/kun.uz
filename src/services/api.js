@@ -36,42 +36,92 @@ export const postsAPI = {
 
 // Categories API
 export const categoriesAPI = {
-  getAll: () => fetchAPI(`/categories`),
+  // Frontend
   getFront: (lang = 'uz') => fetchAPI(`/front/categories?lang=${lang}`),
+
+  // Admin
+  getAll: () => fetchAPI(`/categories`),
+  create: (data) => fetchAPI('/categories', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  }),
+  update: (id, data) => fetchAPI(`/categories/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  }),
+  delete: (id) => fetchAPI(`/categories/${id}`, {
+    method: 'DELETE',
+  }),
 };
 
 // Locations API
 export const locationsAPI = {
-  getAll: () => fetchAPI(`/locations`),
+  // Frontend
   getFront: (lang = 'uz') => fetchAPI(`/front/locations?lang=${lang}`),
+
+  // Admin
+  getAll: () => fetchAPI(`/locations`),
+  create: (data) => fetchAPI('/locations', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  }),
+  update: (id, data) => fetchAPI(`/locations/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  }),
+  delete: (id) => fetchAPI(`/locations/${id}`, {
+    method: 'DELETE',
+  }),
 };
 
-// Admin API (if needed)
+// Admin API
 export const adminAPI = {
+  // Login
   login: (credentials) => fetchAPI('/admin/login', {
     method: 'POST',
     body: JSON.stringify(credentials),
   }),
-  createPost: (postData) => fetchAPI('/admin/posts', {
-    method: 'POST',
-    body: JSON.stringify(postData),
-  }),
-  updatePost: (id, postData) => fetchAPI(`/admin/posts/${id}`, {
-    method: 'PUT',
-    body: JSON.stringify(postData),
-  }),
-  deletePost: (id) => fetchAPI(`/admin/posts/${id}`, {
-    method: 'DELETE',
-  }),
-  createCategory: (categoryData) => fetchAPI('/admin/categories', {
-    method: 'POST',
-    body: JSON.stringify(categoryData),
-  }),
-  updateCategory: (id, categoryData) => fetchAPI(`/admin/categories/${id}`, {
-    method: 'PUT',
-    body: JSON.stringify(categoryData),
-  }),
-  deleteCategory: (id) => fetchAPI(`/admin/categories/${id}`, {
+
+  // Posts CRUD - multipart/form-data uchun
+  getPosts: (lang = 'uz') => fetchAPI(`/posts?lang=${lang}`),
+
+  createPost: async (formData) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/posts`, {
+        method: 'POST',
+        body: formData, // FormData - NO Content-Type header
+      });
+
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('API Fetch Error:', error);
+      throw error;
+    }
+  },
+
+  updatePost: async (id, formData) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/posts/${id}`, {
+        method: 'POST', // Laravel _method=PUT yoki POST
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('API Fetch Error:', error);
+      throw error;
+    }
+  },
+
+  deletePost: (id) => fetchAPI(`/posts/${id}`, {
     method: 'DELETE',
   }),
 };

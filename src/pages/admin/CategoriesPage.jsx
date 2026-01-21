@@ -62,22 +62,14 @@ const CategoriesPage = () => {
     e.preventDefault();
     try {
       if (editingCategory) {
-        // await adminAPI.updateCategory(editingCategory.id, formData);
-        // For now, just update locally
-        setCategories(categories.map(cat =>
-          cat.id === editingCategory.id ? { ...cat, ...formData } : cat
-        ));
+        // ✅ UPDATE - Backend API
+        await categoriesAPI.update(editingCategory.id, formData);
       } else {
-        // await adminAPI.createCategory(formData);
-        // For now, just add locally
-        const newCategory = {
-          id: Date.now(),
-          ...formData,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        };
-        setCategories([...categories, newCategory]);
+        // ✅ CREATE - Backend API
+        await categoriesAPI.create(formData);
       }
+      // Qayta yuklash
+      await fetchCategories();
       handleCloseModal();
     } catch (error) {
       console.error('Error saving category:', error);
@@ -88,9 +80,10 @@ const CategoriesPage = () => {
   const handleDelete = async (id) => {
     if (window.confirm(t('admin.categories.deleteConfirm'))) {
       try {
-        // await adminAPI.deleteCategory(id);
-        // For now, just delete locally
-        setCategories(categories.filter(cat => cat.id !== id));
+        // ✅ DELETE - Backend API
+        await categoriesAPI.delete(id);
+        // Qayta yuklash
+        await fetchCategories();
       } catch (error) {
         console.error('Error deleting category:', error);
         alert('Xatolik yuz berdi. Qaytadan urinib ko\'ring.');
