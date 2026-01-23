@@ -47,7 +47,7 @@ const HomePage = () => {
       <Navbar />
       <CategoryMenu />
       <HeroSection posts={posts.carousel} />
-      <TrendingNews posts={posts.latest} />
+      <TrendingNews posts={posts.main} />
       <PhotoGallery posts={posts.gallery} />
       <Survey />
       <Articles posts={posts.articles} />
