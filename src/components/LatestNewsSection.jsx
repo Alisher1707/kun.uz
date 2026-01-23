@@ -21,6 +21,20 @@ const LatestNewsSection = ({ posts = [] }) => {
     return date.toLocaleDateString('uz-UZ');
   };
 
+  // YouTube video ID ni olish
+  const getYoutubeVideoId = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  // YouTube thumbnail olish
+  const getYoutubeThumbnail = (url) => {
+    const videoId = getYoutubeVideoId(url);
+    return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  };
+
   if (posts.length === 0) return null;
 
   return (
@@ -53,17 +67,39 @@ const LatestNewsSection = ({ posts = [] }) => {
               to={`/news/${item.id}`}
               className="group flex flex-col bg-white hover:shadow-lg transition-shadow duration-300"
             >
-              {/* Image Container */}
+              {/* Image/Video Container */}
               <div className="relative overflow-hidden">
                 {item.image ? (
+                  // Rasm mavjud bo'lsa
                   <img
                     src={item.image}
                     alt={getPostName(item)}
                     className="w-full h-[200px] object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                ) : item.youtube_url ? (
+                  // YouTube video bo'lsa
+                  <div className="relative w-full h-[200px]">
+                    <img
+                      src={getYoutubeThumbnail(item.youtube_url)}
+                      alt={getPostName(item)}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/400x200?text=YouTube+Video';
+                      }}
+                    />
+                    {/* YouTube Play Icon */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
+                  // Rasm ham, video ham yo'q
                   <div className="w-full h-[200px] bg-gray-200 flex items-center justify-center">
-                    <span className="text-gray-400">Rasm yo'q</span>
+                    <span className="text-gray-400">Media yo'q</span>
                   </div>
                 )}
                 {/* Category Badge */}
