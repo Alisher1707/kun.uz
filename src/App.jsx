@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import UzbekistanPage from './pages/UzbekistanPage';
+import CategoryPage from './pages/CategoryPage';
+import LocationPage from './pages/LocationPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import LoginPage from './pages/admin/LoginPage';
 import AdminLayout from './components/admin/AdminLayout';
@@ -22,6 +24,8 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<HomePage />} />
         <Route path="/ozbekiston" element={<UzbekistanPage />} />
+        <Route path="/category/:id" element={<CategoryPage />} />
+        <Route path="/location/:id" element={<LocationPage />} />
         <Route path="/news/:id" element={<NewsDetailPage />} />
 
         {/* Admin Login */}

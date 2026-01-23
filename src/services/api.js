@@ -30,6 +30,12 @@ export const postsAPI = {
   // Bitta post - Frontend API endpoint
   getById: (id, lang = 'uz') => fetchAPI(`/front/posts/${id}?lang=${lang}`),
 
+  // Kategoriya bo'yicha postlar
+  getByCategory: (categoryId, lang = 'uz') => fetchAPI(`/front/category/${categoryId}/posts?lang=${lang}`),
+
+  // Location bo'yicha postlar
+  getByLocation: (locationId, lang = 'uz') => fetchAPI(`/front/location/${locationId}/posts?lang=${lang}`),
+
   // ❌ Flag metodlari o'chirildi - frontend o'zi filter qiladi
   // Frontend categorizePostsByFlags() dan foydalanadi
 };
