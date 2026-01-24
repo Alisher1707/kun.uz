@@ -31,12 +31,7 @@ const UzbekistanPage = () => {
       );
 
       // Hero post (birinchi post)
-      const hero = uzbekPosts[0] || null;
-      setHeroPost(hero);
-
-      // Debug: Hero post va kategoriya ma'lumotlarini tekshirish
-      console.log('Hero Post:', hero);
-      console.log('Hero Category:', hero?.category);
+      setHeroPost(uzbekPosts[0] || null);
 
       // Grid posts (qolgan postlar)
       setUzbekistanPosts(uzbekPosts.slice(1, 10));
@@ -44,26 +39,6 @@ const UzbekistanPage = () => {
       // Latest posts (so'ngi yangiliklar)
       const latest = allPosts.filter(p => p.flags?.is_latest).slice(0, 10);
       setLatestPosts(latest);
-
-      // Debug: Latest posts kategoriyalarini tekshirish
-      console.log('Latest Posts:', latest);
-      console.log('Latest Posts Categories:', latest.map(p => p.category));
-
-      // Har bir post uchun kategoriya ma'lumotlarini batafsil ko'rish
-      console.log('=== DOLZARB YANGILIKLAR DEBUG ===');
-      console.log('Total Latest Posts:', latest.length);
-      latest.forEach((post, index) => {
-        console.log(`\nPost ${index}:`, post.name_uz || post.name);
-        console.log(`Has category?:`, !!post.category);
-        if (post.category) {
-          console.log(`Category Object:`, JSON.stringify(post.category, null, 2));
-          console.log(`Category Name Result:`, getCategoryName(post.category));
-          console.log(`Will show badge?:`, !!(post.category && getCategoryName(post.category)));
-        } else {
-          console.log(`NO CATEGORY for this post!`);
-        }
-      });
-      console.log('=== END DEBUG ===');
 
     } catch (error) {
       console.error('Error loading posts:', error);

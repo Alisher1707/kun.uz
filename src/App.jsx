@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import UzbekistanPage from './pages/UzbekistanPage';
 import CategoryPage from './pages/CategoryPage';
 import LocationPage from './pages/LocationPage';
+import MediaPage from './pages/MediaPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import LoginPage from './pages/admin/LoginPage';
 import AdminLayout from './components/admin/AdminLayout';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/ozbekiston" element={<UzbekistanPage />} />
         <Route path="/category/:id" element={<CategoryPage />} />
         <Route path="/location/:id" element={<LocationPage />} />
+        <Route path="/media" element={<MediaPage />} />
         <Route path="/news/:id" element={<NewsDetailPage />} />
 
         {/* Admin Login */}

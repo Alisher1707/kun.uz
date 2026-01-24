@@ -54,16 +54,6 @@ const HeroSection = ({ posts = [] }) => {
 
   const currentCarouselPost = carouselPosts?.[currentSlide];
 
-  // Debug: Kategoriya ma'lumotlarini tekshirish
-  useEffect(() => {
-    if (currentCarouselPost) {
-      console.log('Current Carousel Post:', currentCarouselPost);
-      console.log('Category Object:', JSON.stringify(currentCarouselPost.category, null, 2));
-      console.log('Category Keys:', Object.keys(currentCarouselPost.category || {}));
-      console.log('Category Name:', getCategoryName(currentCarouselPost.category));
-    }
-  }, [currentCarouselPost]);
-
   return (
     <div className="w-full bg-[#F7F7F7] py-10">
       <div className="max-w-[1400px] mx-auto px-16">
