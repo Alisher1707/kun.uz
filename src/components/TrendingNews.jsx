@@ -23,7 +23,16 @@ const TrendingNews = ({ posts = [] }) => {
   const getCategoryName = (category) => {
     if (!category) return '';
     const lang = i18n.language;
-    return category[`name_${lang}`] || category.name_uz || '';
+
+    // Turli xil mumkin bo'lgan field nomlarini tekshirish
+    return category[`name_${lang}`] ||
+           category.name_uz ||
+           category.name ||
+           category.title ||
+           category[`title_${lang}`] ||
+           category.title_uz ||
+           category.category_name ||
+           '';
   };
 
   // Get main posts for trending section
@@ -72,10 +81,10 @@ const TrendingNews = ({ posts = [] }) => {
                     </div>
                   )}
                   {/* Category Badge */}
-                  {item.category && (
-                    <div className="absolute top-0 right-0">
-                      <div className="bg-black/60 px-4 py-2">
-                        <span className="text-xs font-bold text-white tracking-wider font-sans">
+                  {item.category && getCategoryName(item.category) && (
+                    <div className="absolute top-0 right-0 z-10">
+                      <div className="bg-black/70 px-4 py-2">
+                        <span className="text-xs font-bold text-white tracking-wider uppercase font-sans">
                           {getCategoryName(item.category)}
                         </span>
                       </div>

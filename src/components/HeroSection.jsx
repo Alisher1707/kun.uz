@@ -40,10 +40,29 @@ const HeroSection = ({ posts = [] }) => {
   const getCategoryName = (category) => {
     if (!category) return '';
     const lang = i18n.language;
-    return category[`name_${lang}`] || category.name_uz || '';
+
+    // Turli xil mumkin bo'lgan field nomlarini tekshirish
+    return category[`name_${lang}`] ||
+           category.name_uz ||
+           category.name ||
+           category.title ||
+           category[`title_${lang}`] ||
+           category.title_uz ||
+           category.category_name ||
+           '';
   };
 
   const currentCarouselPost = carouselPosts?.[currentSlide];
+
+  // Debug: Kategoriya ma'lumotlarini tekshirish
+  useEffect(() => {
+    if (currentCarouselPost) {
+      console.log('Current Carousel Post:', currentCarouselPost);
+      console.log('Category Object:', JSON.stringify(currentCarouselPost.category, null, 2));
+      console.log('Category Keys:', Object.keys(currentCarouselPost.category || {}));
+      console.log('Category Name:', getCategoryName(currentCarouselPost.category));
+    }
+  }, [currentCarouselPost]);
 
   return (
     <div className="w-full bg-[#F7F7F7] py-10">
@@ -60,10 +79,10 @@ const HeroSection = ({ posts = [] }) => {
                     className="w-full h-full object-cover"
                   />
                   {/* Category Badge */}
-                  {currentCarouselPost.category && (
-                    <div className="absolute top-0 right-0">
-                      <div className="bg-white/60 px-10 py-3.5">
-                        <span className="text-sm font-bold text-black tracking-wider">
+                  {currentCarouselPost.category && getCategoryName(currentCarouselPost.category) && (
+                    <div className="absolute top-0 right-0 z-10">
+                      <div className="bg-black/70 px-10 py-3.5">
+                        <span className="text-sm font-bold text-white tracking-wider uppercase">
                           {getCategoryName(currentCarouselPost.category)}
                         </span>
                       </div>

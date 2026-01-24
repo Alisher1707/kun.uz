@@ -20,6 +20,21 @@ const Interviews = ({ posts = [] }) => {
     return post[`body_${lang}`] || post.body_uz || post.body || '';
   };
 
+  const getCategoryName = (category) => {
+    if (!category) return '';
+    const lang = i18n.language;
+
+    // Turli xil mumkin bo'lgan field nomlarini tekshirish
+    return category[`name_${lang}`] ||
+           category.name_uz ||
+           category.name ||
+           category.title ||
+           category[`title_${lang}`] ||
+           category.title_uz ||
+           category.category_name ||
+           '';
+  };
+
   return (
     <div className="w-full bg-white py-10">
       <div className="max-w-[1400px] mx-auto px-16">
@@ -60,6 +75,16 @@ const Interviews = ({ posts = [] }) => {
                   ) : (
                     <div className="w-full h-[200px] bg-gray-200 flex items-center justify-center">
                       <span className="text-gray-400">Rasm yo'q</span>
+                    </div>
+                  )}
+                  {/* Category Badge */}
+                  {interview.category && getCategoryName(interview.category) && (
+                    <div className="absolute top-0 right-0 z-10">
+                      <div className="bg-black/70 px-4 py-2">
+                        <span className="text-xs font-bold text-white tracking-wider uppercase font-sans">
+                          {getCategoryName(interview.category)}
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>

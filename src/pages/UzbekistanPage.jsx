@@ -31,7 +31,12 @@ const UzbekistanPage = () => {
       );
 
       // Hero post (birinchi post)
-      setHeroPost(uzbekPosts[0] || null);
+      const hero = uzbekPosts[0] || null;
+      setHeroPost(hero);
+
+      // Debug: Hero post va kategoriya ma'lumotlarini tekshirish
+      console.log('Hero Post:', hero);
+      console.log('Hero Category:', hero?.category);
 
       // Grid posts (qolgan postlar)
       setUzbekistanPosts(uzbekPosts.slice(1, 10));
@@ -39,6 +44,26 @@ const UzbekistanPage = () => {
       // Latest posts (so'ngi yangiliklar)
       const latest = allPosts.filter(p => p.flags?.is_latest).slice(0, 10);
       setLatestPosts(latest);
+
+      // Debug: Latest posts kategoriyalarini tekshirish
+      console.log('Latest Posts:', latest);
+      console.log('Latest Posts Categories:', latest.map(p => p.category));
+
+      // Har bir post uchun kategoriya ma'lumotlarini batafsil ko'rish
+      console.log('=== DOLZARB YANGILIKLAR DEBUG ===');
+      console.log('Total Latest Posts:', latest.length);
+      latest.forEach((post, index) => {
+        console.log(`\nPost ${index}:`, post.name_uz || post.name);
+        console.log(`Has category?:`, !!post.category);
+        if (post.category) {
+          console.log(`Category Object:`, JSON.stringify(post.category, null, 2));
+          console.log(`Category Name Result:`, getCategoryName(post.category));
+          console.log(`Will show badge?:`, !!(post.category && getCategoryName(post.category)));
+        } else {
+          console.log(`NO CATEGORY for this post!`);
+        }
+      });
+      console.log('=== END DEBUG ===');
 
     } catch (error) {
       console.error('Error loading posts:', error);
@@ -66,7 +91,16 @@ const UzbekistanPage = () => {
   const getCategoryName = (category) => {
     if (!category) return '';
     const lang = i18n.language;
-    return category[`name_${lang}`] || category.name_uz || '';
+
+    // Turli xil mumkin bo'lgan field nomlarini tekshirish
+    return category[`name_${lang}`] ||
+           category.name_uz ||
+           category.name ||
+           category.title ||
+           category[`title_${lang}`] ||
+           category.title_uz ||
+           category.category_name ||
+           '';
   };
 
   if (loading) {
@@ -104,10 +138,10 @@ const UzbekistanPage = () => {
                     className="w-full h-[670px] object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   {/* Category Badge */}
-                  {heroPost.category && (
-                    <div className="absolute top-0 right-0">
-                      <div className="bg-gray-700/80 px-6 py-3">
-                        <span className="text-base font-bold text-white tracking-wider font-sans">
+                  {heroPost.category && getCategoryName(heroPost.category) && (
+                    <div className="absolute top-0 right-0 z-10">
+                      <div className="bg-black/70 px-10 py-3.5">
+                        <span className="text-sm font-bold text-white tracking-wider uppercase font-sans">
                           {getCategoryName(heroPost.category)}
                         </span>
                       </div>
@@ -149,10 +183,10 @@ const UzbekistanPage = () => {
                           </div>
                         )}
                         {/* Category Badge */}
-                        {item.category && (
-                          <div className="absolute top-0 right-0">
-                            <div className="bg-black/60 px-3 py-1.5">
-                              <span className="text-xs font-bold text-white tracking-wider font-sans">
+                        {item.category && getCategoryName(item.category) && (
+                          <div className="absolute top-0 right-0 z-10">
+                            <div className="bg-black/70 px-4 py-2">
+                              <span className="text-xs font-bold text-white tracking-wider uppercase font-sans">
                                 {getCategoryName(item.category)}
                               </span>
                             </div>
@@ -307,10 +341,10 @@ const UzbekistanPage = () => {
                       </div>
                     )}
                     {/* Category Badge */}
-                    {item.category && (
-                      <div className="absolute top-0 right-0">
-                        <div className="bg-black/60 px-4 py-2">
-                          <span className="text-xs font-bold text-white tracking-wider font-sans">
+                    {item.category && getCategoryName(item.category) && (
+                      <div className="absolute top-0 right-0 z-10">
+                        <div className="bg-black/70 px-4 py-2">
+                          <span className="text-xs font-bold text-white tracking-wider uppercase font-sans">
                             {getCategoryName(item.category)}
                           </span>
                         </div>

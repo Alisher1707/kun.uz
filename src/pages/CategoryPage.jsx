@@ -45,7 +45,16 @@ const CategoryPage = () => {
   const getCategoryName = (category) => {
     if (!category) return '';
     const lang = i18n.language;
-    return category[`name_${lang}`] || category.name_uz || category.name || '';
+
+    // Turli xil mumkin bo'lgan field nomlarini tekshirish
+    return category[`name_${lang}`] ||
+           category.name_uz ||
+           category.name ||
+           category.title ||
+           category[`title_${lang}`] ||
+           category.title_uz ||
+           category.category_name ||
+           '';
   };
 
   if (loading) {

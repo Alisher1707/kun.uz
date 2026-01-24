@@ -45,7 +45,15 @@ const LocationPage = () => {
   const getLocationName = (location) => {
     if (!location) return '';
     const lang = i18n.language;
-    return location[`name_${lang}`] || location.name_uz || location.name || '';
+
+    // Turli xil mumkin bo'lgan field nomlarini tekshirish
+    return location[`name_${lang}`] ||
+           location.name_uz ||
+           location.name ||
+           location.title ||
+           location[`title_${lang}`] ||
+           location.title_uz ||
+           '';
   };
 
   if (loading) {
