@@ -94,6 +94,15 @@ const NewsDetailPage = () => {
     return post.category[`name_${lang}`] || post.category.name_uz || '';
   };
 
+  // YouTube video ID ni olish
+  const getYoutubeEmbedUrl = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = (match && match[2].length === 11) ? match[2] : null;
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -137,9 +146,10 @@ const NewsDetailPage = () => {
                 {post.youtube_url ? (
                   <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
                     <iframe
-                      src={post.youtube_url.replace('watch?v=', 'embed/')}
+                      src={getYoutubeEmbedUrl(post.youtube_url)}
                       className="w-full h-full"
                       allowFullScreen
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       title="YouTube video"
                     ></iframe>
                   </div>
