@@ -27,6 +27,20 @@ const VideoNews = ({ posts = [] }) => {
     return post[`name_${lang}`] || post.name_uz || post.name || '';
   };
 
+  // YouTube video ID ni olish
+  const getYoutubeVideoId = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  // YouTube thumbnail olish
+  const getYoutubeThumbnail = (url) => {
+    const videoId = getYoutubeVideoId(url);
+    return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  };
+
   if (!posts || posts.length === 0) {
     return null;
   }
@@ -80,17 +94,14 @@ const VideoNews = ({ posts = [] }) => {
                 >
                   {/* Video Thumbnail */}
                   <div className="relative w-32 h-20 flex-shrink-0 bg-gray-800 overflow-hidden rounded">
-                    {video.image ? (
-                      <img
-                        src={video.image}
-                        alt={getPostName(video)}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gray-700">
-                        <Play className="w-8 h-8 text-white" />
-                      </div>
-                    )}
+                    <img
+                      src={getYoutubeThumbnail(video.youtube_url) || video.image || 'https://via.placeholder.com/320x180?text=Video'}
+                      alt={getPostName(video)}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/320x180?text=Video';
+                      }}
+                    />
                     {/* Small Play Button */}
                     <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
                       <div className="w-7 h-7 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
