@@ -293,15 +293,22 @@ const NewsDetailPage = () => {
                 </h2>
                 <span className="w-2 h-2 bg-red-600 rounded-full"></span>
               </div>
-              <Link
-                to="/"
-                className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
-              >
-                Bo'limga o'tish
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              {post.category?.id ? (
+                <Link
+                  to={`/category/${post.category.id}`}
+                  className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
+                  onClick={() => console.log('Category link clicked:', post.category.id)}
+                >
+                  Bo'limga o'tish
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              ) : (
+                <div className="py-3 px-20 bg-gray-300 text-center font-medium text-base text-gray-500 flex items-center justify-center gap-2 mr-10 font-sans cursor-not-allowed">
+                  Bo'limga o'tish
+                </div>
+              )}
             </div>
 
             {/* News Grid */}

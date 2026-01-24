@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const VideoNews = ({ posts = [] }) => {
   const { t, i18n } = useTranslation();
@@ -136,10 +137,13 @@ const VideoNews = ({ posts = [] }) => {
             </div>
 
             {/* View All Button */}
-            <button className="py-4 px-6 bg-[#1a1f2e] text-center font-medium text-sm hover:bg-[#252b3d] transition-colors flex items-center justify-center gap-2 text-white font-sans">
+            <Link
+              to="/media"
+              className="py-4 px-6 bg-[#1a1f2e] text-center font-medium text-sm hover:bg-[#252b3d] transition-colors flex items-center justify-center gap-2 text-white font-sans"
+            >
               {t('videoNews.viewMore')}
               <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5 brightness-0 invert" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

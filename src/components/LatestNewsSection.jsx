@@ -68,9 +68,9 @@ const LatestNewsSection = ({ posts = [] }) => {
           </Link>
         </div>
 
-        {/* News Grid - 4 columns */}
+        {/* News Grid - 4 columns, 2 rows (8 posts) */}
         <div className="grid grid-cols-4 gap-6">
-          {posts.slice(0, 4).map((item) => (
+          {posts.slice(0, 8).map((item) => (
             <Link
               key={item.id}
               to={`/news/${item.id}`}

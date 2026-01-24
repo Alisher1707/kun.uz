@@ -35,13 +35,23 @@ const Business = ({ posts = [] }) => {
             </h2>
             <span className="w-2 h-2 bg-red-600 rounded-full"></span>
           </div>
-          <Link
-            to="/"
-            className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
-          >
-            {t('business.viewAll')}
-            <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
-          </Link>
+          {posts.length > 0 && posts[0].category?.id ? (
+            <Link
+              to={`/category/${posts[0].category.id}`}
+              className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
+            >
+              {t('business.viewAll')}
+              <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
+            </Link>
+          ) : (
+            <Link
+              to="/"
+              className="py-3 px-20 bg-[#E8E8E8] text-center font-medium text-base hover:bg-[#D8D8D8] transition-colors flex items-center justify-center gap-2 mr-10 font-sans text-[#010E38]"
+            >
+              {t('business.viewAll')}
+              <img src="/svg/Bolim svg.svg" alt="arrow" className="w-5 h-5" />
+            </Link>
+          )}
         </div>
 
         {/* Business Grid - 4 columns */}
