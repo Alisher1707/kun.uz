@@ -127,13 +127,6 @@ const LoginPage = () => {
               {loading ? 'Yuklanmoqda...' : t('admin.login.submit')}
             </button>
           </form>
-
-          {/* Demo Credentials Info */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <p className="text-xs text-gray-600 text-center">
-              <strong>Demo:</strong> username: admin, password: admin123
-            </p>
-          </div>
         </div>
 
         {/* Back to Home Link */}

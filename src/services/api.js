@@ -1,4 +1,6 @@
-const API_BASE_URL = 'https://proftestitlive.uz/api';
+// Development uchun proxy ishlatamiz (vite.config.js da sozlangan)
+// Production da to'liq URL ishlatiladi
+const API_BASE_URL = import.meta.env.DEV ? '/api' : 'https://proftestitlive.uz/api';
 
 // Generic API fetch function
 const fetchAPI = async (endpoint, options = {}) => {
@@ -130,6 +132,81 @@ export const adminAPI = {
   deletePost: (id) => fetchAPI(`/posts/${id}`, {
     method: 'DELETE',
   }),
+
+  // Get admin profile - https://proftestitlive.uz/api/admin/update
+  getProfile: async () => {
+    try {
+      const adminUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
+      const authToken = adminUser.token || localStorage.getItem('authToken');
+
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
+      const response = await fetch(`${API_BASE_URL}/admin/update`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ action: 'get' }), // Send action to differentiate get from update
+      });
+
+      if (!response.ok) {
+        throw new Error(`API Error: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Get Profile Error:', error);
+      throw error;
+    }
+  },
+
+  // Profile update - https://proftestitlive.uz/api/admin/update
+  updateProfile: async (data, isFormData = false) => {
+    try {
+      const headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      };
+
+      // Get authentication token or user data from localStorage
+      const adminUser = JSON.parse(localStorage.getItem('adminUser') || '{}');
+      const authToken = adminUser.token || localStorage.getItem('authToken');
+
+      // Add authorization header if token exists
+      if (authToken) {
+        headers['Authorization'] = `Bearer ${authToken}`;
+      }
+
+      console.log('🔄 Sending PUT request to:', `${API_BASE_URL}/admin/update`);
+      console.log('📦 Request data:', data);
+
+      const response = await fetch(`${API_BASE_URL}/admin/update`, {
+        method: 'PUT',
+        headers: headers,
+        body: JSON.stringify(data),
+        mode: 'cors',
+        credentials: 'include',
+      });
+
+      console.log('📥 Response status:', response.status);
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        console.error('❌ Error response:', errorData);
+        throw new Error(errorData.message || `API Error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('✅ Success response:', result);
+      return result;
+    } catch (error) {
+      console.error('❌ Profile Update Error:', error);
+      throw error;
+    }
+  },
 };
 
 export default {

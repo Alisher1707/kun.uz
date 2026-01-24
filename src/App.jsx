@@ -11,6 +11,7 @@ import DashboardPage from './pages/admin/DashboardPage';
 import CategoriesPage from './pages/admin/CategoriesPage';
 import PostsPage from './pages/admin/PostsPage';
 import LocationsPage from './pages/admin/LocationsPage';
+import ProfilePage from './pages/admin/ProfilePage';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -47,6 +48,7 @@ function App() {
           <Route path="categories" element={<CategoriesPage />} />
           <Route path="posts" element={<PostsPage />} />
           <Route path="locations" element={<LocationsPage />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </Router>
