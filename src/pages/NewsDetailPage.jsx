@@ -103,6 +103,15 @@ const NewsDetailPage = () => {
     return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
   };
 
+  // YouTube thumbnail rasmini olish
+  const getYoutubeThumbnail = (url) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    const videoId = (match && match[2].length === 11) ? match[2] : null;
+    return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
@@ -305,7 +314,23 @@ const NewsDetailPage = () => {
                 >
                   {/* Image Container */}
                   <div className="relative overflow-hidden">
-                    {item.image ? (
+                    {item.youtube_url ? (
+                      <div className="relative w-full h-[200px]">
+                        <img
+                          src={getYoutubeThumbnail(item.youtube_url)}
+                          alt={getPostName(item)}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        {/* Play Button Overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+                          <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                            <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    ) : item.image ? (
                       <img
                         src={item.image}
                         alt={getPostName(item)}
